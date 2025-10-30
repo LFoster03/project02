@@ -116,3 +116,118 @@ A machine learning model, such as Logistic Regression, is trained using the prep
 Model performance is evaluated using metrics like accuracy, confusion matrix, and classification reports to understand how well it predicts survival.
 
 Reflection: Evaluating the model on a separate test set helps assess its reliability and provides insight into potential areas for improvement.
+
+
+Section 3: Feature Selection and Justification
+3.1 Choose Features and Target
+
+Target Variable:
+
+survived — indicates whether a passenger survived (1) or did not survive (0).
+
+This is the outcome we aim to predict using passenger information.
+
+Input Features:
+
+Age: Passenger age may affect survival because children or seniors might have had different survival probabilities.
+
+Fare: Ticket price often correlates with passenger class and access to lifeboats.
+
+Pclass: Passenger class reflects socio-economic status and cabin location, historically impacting survival.
+
+Sex: Gender strongly influenced survival, as women were prioritized during evacuation.
+
+Family Size: Indicates whether a passenger traveled alone or with family; medium-sized families often had higher survival rates.
+
+Justification:
+
+These features provide a mix of demographic, socio-economic, and relational information.
+
+Historical patterns suggest that sex, class, and family-related features are highly predictive of survival.
+
+Age and fare add nuanced information, improving the model’s ability to detect patterns.
+
+3.2 Visual Analysis of Survival Patterns
+
+Sex:
+
+Female passengers had significantly higher survival rates than males.
+
+This aligns with the historical "women and children first" evacuation policy.
+
+Passenger Class (Pclass):
+
+First-class passengers had the highest survival rate, followed by second and third class.
+
+Higher socio-economic status likely provided better access to lifeboats.
+
+Family Size:
+
+Medium-sized families tended to survive more often than solo travelers or very large families.
+
+Traveling with a small family may have offered support during evacuation, while large families may have faced coordination difficulties.
+
+Age:
+
+Children and adults generally had better survival rates than seniors.
+
+Age influenced vulnerability and the likelihood of being assisted during the evacuation.
+
+Fare:
+
+Higher fares often corresponded to first-class passengers, reinforcing the class-survival correlation.
+
+3.3 Reflection
+
+Why these features were selected:
+
+They capture the most relevant historical, demographic, and social factors affecting survival.
+
+Together, they provide a balanced view of each passenger’s situation.
+
+Most predictive features:
+
+Sex and Pclass are historically and statistically the strongest predictors.
+
+Family Size adds additional predictive power by showing relational context.
+
+Age and fare offer subtle but meaningful signals.
+
+Section 4: Train/Test Split and Class Balance
+4.1 Train/Test Split
+
+The dataset was split into training (80%) and testing (20%) sets.
+
+The target variable for classification is survived.
+
+The split ensures that the model can learn patterns from the training data and be evaluated on unseen test data.
+
+4.2 Class Distribution
+Dataset	Survived=0	Survived=1
+Original	61.6%	38.4%
+Train	61.1%	38.9%
+Test	63.7%	36.3%
+
+The training set closely matches the original dataset, maintaining representative proportions of survivors and non-survivors.
+
+The test set is slightly skewed toward non-survivors, but the difference is small.
+
+4.3 Importance of Stratification
+
+Stratified splitting ensures that both training and test sets preserve the exact proportions of the target variable as in the original dataset.
+
+This prevents class imbalance in either subset, which can:
+
+Bias the model toward the majority class.
+
+Mislead evaluation metrics like accuracy or precision.
+
+For this dataset, stratification would produce a more reliable evaluation, especially because survival is not evenly distributed (61.6% vs. 38.4%).
+
+4.4 Reflection
+
+The random split produced reasonably balanced sets, but the test set was slightly off from the original distribution.
+
+Using stratification would improve model reliability and ensure that performance metrics reflect the true underlying patterns in the data.
+
+Maintaining class balance is particularly important for classification tasks with imbalanced targets, like predicting Titanic survival.
